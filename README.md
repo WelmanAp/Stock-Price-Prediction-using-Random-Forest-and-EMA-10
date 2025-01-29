@@ -1,6 +1,6 @@
 # Stock-Price-Prediction-using-Random-Forest-and-EMA-10
 
-Proyek ini adalah sebuah website prediksi harga saham yang dibangun menggunakan Flask dan menerapkan algoritma Random Forest untuk memprediksi harga saham berdasarkan Exponential Moving Average (EMA 10). Website ini terhubung dengan Yahoo Finance API untuk mendapatkan data harga saham secara real-time.
+Proyek membangun sebuah website untuk memprediksi harga saham menggunakan framework Flask dan menerapkan algoritma Random Forest untuk memprediksi harga saham berdasarkan Exponential Moving Average (EMA 10). Website ini terhubung dengan Yahoo Finance API untuk mendapatkan data harga saham secara real-time.
 
 Fitur Utama:
 ✅ Pengambilan Data Saham → Menggunakan Yahoo Finance API untuk mengambil harga saham historis.
