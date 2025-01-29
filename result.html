@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasil Prediksi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #ffffff;
+      }
+      h1,
+      h4 {
+        font-family: "Merriweather", serif;
+        color: #000000;
+        font-weight: 700;
+      }
+      p {
+        font-size: 16px;
+        color: #000000;
+      }
+      .text-success {
+        color: #008000 !important; /* Warna hijau pekat */
+        font-weight: 600;
+      }
+      .text-danger {
+        color: #8b0000 !important; /* Warna merah pekat */
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+    <div class="container mt-5">
+      <h1 class="text-center">Hasil Prediksi untuk {{ stock_name }}</h1>
+
+      <div class="mt-4">
+        <p>
+          <strong>Harga Close:</strong> 
+          {{ close_price | format_price }}
+          <span class="text-muted">(Diperbarui otomatis setiap pukul 16.30 WIB)</span>
+        </p>
+
+        <p>
+          <strong>Prediksi Harga Saham Berikutnya:</strong>
+          <span 
+            class="{% if prediction > close_price %}text-success{% else %}text-danger{% endif %}">
+            {{ prediction | format_price }}
+          </span>
+        </p>
+
+        <p>
+          <strong>Presentase Kenaikan/Penurunan:</strong>
+          <span 
+            class="{% if percentage_change|float > 0 %}text-success{% else %}text-danger{% endif %}">
+            {{ percentage_change }}%
+            <i class="{% if percentage_change|float > 0 %}bi bi-arrow-up{% else %}bi bi-arrow-down{% endif %}"></i>
+          </span>
+        </p>
+
+        <p>
+          <strong>Akurasi Prediksi (MAPE):</strong> {{ accuracy }}%
+        </p>
+
+        <p><strong>Prediksi berlaku untuk:</strong> {{ prediction_date }}</p>
+
+        <div class="mt-4">
+          <h4>Grafik Harga Saham</h4>
+          <div>{{ graph_html | safe }}</div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/" class="btn btn-primary">Kembali ke Halaman Utama</a>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
